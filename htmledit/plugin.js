@@ -15,7 +15,8 @@ tinymce.PluginManager.add('htmledit', function (editor) {
     if (!document.getElementById(id)) {
       altTextarea = document.createElement('textarea');
       altTextarea.setAttribute('id', id);
-      editor.container.after(altTextarea);
+      var c = editor.container;
+      c.parentNode.insertBefore(altTextarea, c.nextSibling);
       altTextarea.style.resize = 'none';
       altTextarea.style.position = 'fixed';
       altTextarea.style.borderWidth = 0;
