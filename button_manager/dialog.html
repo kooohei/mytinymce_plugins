@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.draggableArea .manager__toolbar,
+.draggableArea .manager__toolbar--buttons {
+    cursor: move;
+    background: #eee;
+    min-height: 1em;
+}
+.draggableArea .manager__toolbar--buttons {
+    background: #eee;
+}
+
+.draggableArea .manager__toolbar--button {
+    cursor: move;
+    display:inline-block;
+    border: 1px solid #999;
+    margin: 0 5px;
+}
+
+.draggableArea .manager__toolbar .manager__toolbar--button {
+    width: auto;
+    height: auto;
+}
+
+
+</style>
+<link rel="stylesheet" href="../../skins/lightgray/skin.min.css">
+</head>
+<body>
+    <h3>ボタン並べ替え</h3>
+<!--
+<button onclick="top.tinymce.activeEditor.windowManager.getWindows()[0].close();">Close window</button>
+-->
+
+<div id="app-buttonmanager">
+    <div class="draggableArea">
+        <draggable 
+            :list="toolbar0"
+            :options="{group:'dataset'}"
+            @start="drag=true"
+            @end="drag=false"
+            class="manager__toolbar">
+        <div 
+            v-for="(element, index) in toolbar0"
+            class="manager__toolbar--button"
+            v-bind:class="element.icon_class">
+            <span>{{ element.icon_class ? '' : element.display_name }}</span>
+            <button v-on:click.prevent="remove(element, index, 'toolbar0')">X</button>
+        </div>
+        </draggable>
+
+    <hr>
+        <draggable 
+            :list="toolbar1"
+            :options="{group:'dataset'}"
+            @start="drag=true"
+            @end="drag=false"
+            class="manager__toolbar">
+        <div 
+            v-for="(element, index) in toolbar1"
+            class="manager__toolbar--button"
+            v-bind:class="element.icon_class">
+            <span>{{ element.icon_class ? '' : element.display_name }}</span>
+            <button v-on:click.prevent="remove(element, index, 'toolbar1')">X</button>
+        </div>
+        </draggable>
+        <hr>
+        <draggable 
+            :list="toolbar2"
+            :options="{group:'dataset'}"
+            @start="drag=true"
+            @end="drag=false"
+            class="manager__toolbar">
+        <div 
+            v-for="(element, index) in toolbar2"
+            class="manager__toolbar--button"
+            v-bind:class="element.icon_class">
+            <span>{{ element.icon_class ? '' : element.display_name }}</span>
+            <button v-on:click.prevent="remove(element, index, 'toolbar2')">X</button>
+        </div>
+        </draggable>
+        <hr>
+        <draggable 
+            :list="toolbar3"
+            :options="{group:'dataset'}"
+            @start="drag=true"
+            @end="drag=false"
+            class="manager__toolbar">
+        <div 
+            v-for="(element, index) in toolbar3"
+            class="manager__toolbar--button"
+            v-bind:class="element.icon_class">
+            <span>{{ element.icon_class ? '' : element.display_name }}</span>
+            <button v-on:click.prevent="remove(element, index, 'toolbar3')">X</button>
+        </div>
+        </draggable>
+        <hr>
+        <draggable 
+            :list="toolbar4"
+            :options="{group:'dataset'}"
+            @start="drag=true"
+            @end="drag=false"
+            class="manager__toolbar">
+        <div 
+            v-for="(element, index) in toolbar4"
+            class="manager__toolbar--button"
+            v-bind:class="element.icon_class">
+            <span>{{ element.icon_class ? '' : element.display_name }}</span>
+            <button v-on:click.prevent="remove(element, index, 'toolbar4')">X</button>
+        </div>
+        </draggable>
+        <hr>
+
+        <draggable
+            :list="buttons"
+            :options="{group: {name: 'dataset', pull:'clone', put:false} }"
+            @start="drag=true"
+            @end="drag=false"
+            class="manager__toolbar--buttons">
+        <div
+            v-for="(element, index) in buttons"
+            class="manager__toolbar--button"
+            v-bind:class="element.icon_class">
+            {{ element.icon_class ? '' : element.display_name }}
+        </div>
+        </draggable>
+    <hr>
+
+    </div>
+<!--
+<p>{{ drag }}</p>
+
+    <div>
+    <h2>toolbar0</h2>
+    <div v-for="element in toolbar0">{{element.name}}</div>
+    <h2>toolbar1</h2>
+    <div v-for="element in toolbar1">{{element.name}}</div>
+    <h2>toolbar2</h2>
+    <div v-for="element in toolbar2">{{element.name}}</div>
+    <h2>toolbar3</h2>
+    <div v-for="element in toolbar3">{{element.name}}</div>
+    <h2>toolbar4</h2>
+    <div v-for="element in toolbar4">{{element.name}}</div>
+    </div>
+-->
+</div> <!-- /container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"></script>
+<script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Draggable/master/dist/vuedraggable.js"></script>
+<script src="./dialog.js"></script>
+
+</body>
+</html>
